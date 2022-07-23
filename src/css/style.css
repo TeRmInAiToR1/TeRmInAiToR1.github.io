@@ -1,55 +1,202 @@
-body{
+body {
     font-family: Arial, "sans-serif"
 }
 
-nav{
+
+.preloader{
+    background: #e0e0e0;
+    z-index: 101;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    
+    -webkit-animation: hide_loader forwards;
+    -o-animation: hide_loader forwards;
+    animation: hide_loader forwards;
+    animation-delay: 3s;
+}
+.preloader__item:nth-child(2) {
+    border-color: blueviolet;
+    animation-delay: 0.5s;
+}
+.preloader__item:nth-child(3) {
+    animation-delay: 1s;
+}
+.preloader__item:nth-child(4) {
+    border-color: blueviolet;
+    animation-delay: 1.5s;
+}
+.preloader__item:nth-child(5) {
+    animation-delay: 2s;
+}
+.preloader__item:nth-child(6) {
+    border-color: blueviolet;
+    animation-delay: 2.5s;
+}
+.preloader__item{
+    border: 30px solid orange;
+    border-radius: 50%;
+    width: 30px;
+    left: calc(50% - 150px);
+    top: calc(50% - 75px);
+    position: absolute;
+    
+    opacity: 0;
+    transform-origin: 150px 150px;
+    transform: scale(1);
+
+    -webkit-animation: loader 3s infinite ease;
+    -o-animation: loader 3s infinite ease;
+    animation: loader 3s infinite ease;
+    
+}
+@keyframes loader{
+    0%{
+        opacity: 1;
+        transform: rotate(0deg) scale(1.2);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(360deg) scale(0);
+    }
+}
+@keyframes hide_loader{
+    100%{
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+
+main {
+    width: 100%;
+    height: 100%;
+}
+
+nav {
     width: 100%;
     height: 60px;
-    background: #344051
+    background: #344051;
+    position: fixed;
+    z-index: 100;
 }
-.logo{
+
+.logo {
     color: #fff;
     font-size: 28px;
     line-height: 60px;
     padding-left: 388px;
     float: left;
+
+    -webkit-animation: appearing 2s ease;
+    -o-animation: appearing 2s ease;
+    animation: appearing 2s ease;
+    
 }
 
-.menu{
+@keyframes appearing {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.menu {
     float: left;
     padding-left: 432px;
 }
-.menu li{
+.menu li {
     color: #fff;
     float: left;
     line-height: 60px;
     margin-right: 40px;
     font-size: 16px;
     text-transform: uppercase;
+
+    -webkit-animation: topshift 0.4s ease forwards;
+    -o-animation: topshift 0.4s ease forwards;
+    animation: topshift 0.4s ease forwards;
+    opacity: 0;
+    
+}
+.menu li a {
+    display: inline-block;
+    transition: all 0.1s;
+    transform: scale(1);
+}
+.menu li a:visited {
+    color: white;
+}
+.menu li a:hover {
+    color: orange;
+    transform: scale(1.1);
+}
+@keyframes topshift {
+    from {
+        opacity: 0;
+        margin-top: -80px;
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+.menu li:nth-child(2) {
+    animation-delay: 0.4s;
+}
+.menu li:nth-child(3) {
+    animation-delay: 0.8s;
+}
+.menu li:nth-child(4) {
+    animation-delay: 1.2s;
+}
+.menu li:nth-child(5) {
+    animation-delay: 1.6s;
+}
+.menu li:nth-child(6) {
+    animation-delay: 2s;
 }
 
-.main{
+
+.main {
     width: 100%;
-    height: calc(100% - 60px);
+    height: 100%;
     background: url(../img/boy.png) 90% 100%/auto 85% no-repeat, url(../img/background.jpg) center/cover no-repeat;
     box-shadow: inset 0 -5px 20px grey;
 }
-.title__container{
+
+.title__container {
     float: left;
     margin: 350px 0px 0px 404px;
     color: #2c384a;
     text-align: center;
+
+    opacity: 0;
+    -webkit-animation: titlemove 1s ease forwards;
+    -o-animation: titlemove 1s ease forwards;
+    animation: titlemove 1s ease forwards;
+
+    -webkit-animation-delay: 2.4s;
+    -o-animation-delay: 2.4s;
+    animation-delay: 2.4s;
 }
-.title__container h1{
+.title__container h1 {
     font-size: 60px;
     font-weight: bold;
 }
-.title__container h4{
+.title__container h4 {
     margin-top: 40px;
     font-size: 22px;
-    color: #79818d
+    color: #79818d;
 }
-.title__container input{
+.title__container input {
     height: 40px;
     text-align: center;
     border: 2px solid #6d7682;
@@ -59,9 +206,31 @@ nav{
     font-size: 16px;
     padding: 0px 16px;
     margin: 50px 14px 0px 14px;
+
+    transition: all 0.2s;
+    transform: scale(1);
+}
+.title__container input:hover {
+    background: #344051;
+    color: white;
+}
+.title__container input:active {
+    transform: scale(1.1);
+}
+@keyframes titlemove {
+    from {
+        opacity: 0;
+        margin-left: -500px;
+    }
+
+    to {
+        opacity: 1;
+        margin-left: 404px;
+    }
 }
 
-.about_me h2{
+
+.about_me h2 {
     text-align: center;
     width: 130px;
     font-size: 26px;
@@ -69,8 +238,14 @@ nav{
     margin: 0px auto;
     padding: 110px 0 20px 0;
     color: #263244;
+
+    transition: all 2s;
+    transform-origin: 50% 120px;
 }
-.about_me hr{
+.about_me h2:hover {
+    transform: rotate(360deg) scale(1.2);
+}
+.about_me hr {
     height: 4px;
     border: none;
     background: orange;
@@ -78,27 +253,48 @@ nav{
     margin: 0px auto;
 }
 
-#image1{
+#image1 {
     display: block;
     margin: 60px auto 7px auto;
+    opacity: 0;
+
+    -webkit-animation: man_is_moving 2s forwards;
+    -o-animation: man_is_moving 2s forwards;
+    animation: man_is_moving 2s forwards;
+    
 }
-.resume p{
+@keyframes man_is_moving {
+    from {
+        margin-left: -500px;
+        margin-top: -100px;
+        opacity: 0;
+    }
+
+    to {
+        margin-top: 60px;
+        margin-bottom: 7px;
+        opacity: 1;
+    }
+}
+
+.resume p {
     width: 730px;
     margin: 22px auto;
     font-size: 16px;
     text-align: left;
     color: #3f495a;
 }
-#image2{
+#image2 {
     position: absolute;
     display: block;
     float: left;
     margin-top: 7px;
     margin-left: calc(50% - 80px);
 }
-.resume input{
+.resume input {
     display: block;
     height: 30px;
+/*    width: 170px;*/
     text-align: center;
     border: 2px solid #3f495a;
     background: none;
@@ -109,13 +305,21 @@ nav{
     margin-left: calc(50% - 85px);
     margin-bottom: 100px;
 }
+.resume input:hover {
+    background: #344051;
+    color: white;
+}
+.resume input:active {
+    transform: scale(1.1);
+}
 
-.skills{
+
+.skills {
     width: 100%;
     height: 525px;
-    background: url(../img/background2.jpg) center/cover no-repeat;
+    background: url(../img/background2.jpg) center/cover no-repeat fixed;
 }
-.skills h2{
+.skills h2 {
     text-align: center;
     width: 230px;
     font-size: 26px;
@@ -124,35 +328,48 @@ nav{
     padding: 105px 0 20px 0;
     color: #263244;
 }
-.skills hr{
+.skills hr {
     height: 4px;
     border: none;
     background: orange;
     width: 70px;
     margin: 0px auto;
 }
-.skills_item{
+.skills_item {
     width: 210px;
     float: left;
     text-align: center;
     margin: 110px 42px 0 42px;
 }
-.skills_item h3{
+.skills_item h3 {
     font-weight: bold;
     color: orange;
     font-size: 16px;
     margin-top: 40px;
 }
-.all_skills{
+.all_skills {
     padding-left: 360px;
 }
-.skills_item p{
+.skills_item::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    transform: scaleX(0);
+    background-color: orange;
+    transition: all 0.3s;
+}
+.skills_item:hover::after{
+    transform: scaleX(1);
+}
+.skills_item p {
     margin-top: 10px;
     line-height: 20px;
     color: #263244;
 }
 
-.cases h2{
+
+.cases h2 {
     text-align: center;
     width: 230px;
     font-size: 26px;
@@ -161,36 +378,39 @@ nav{
     padding: 105px 0 20px 0;
     color: #263244;
 }
-.cases hr{
+.cases hr {
     height: 4px;
     border: none;
     background: orange;
     width: 70px;
     margin: 0px auto;
 }
-.cases .main_paragraph{
+.cases .main_paragraph {
     text-align: center;
     font-size: 21px;
     margin-top: 37px;
     margin-bottom: 45px;
 }
-.cases img{
+.cases img {
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
-.client{
+
+
+.client {
     margin: 40px 85px 0 360px;
     float: left;
 }
-.client h3{
+.client h3 {
     color: #263244;
     font-size: 21px;
     font-weight: bold;
 }
-.client p{
+
+.client p {
     line-height: 30px;
 }
-.client input{
+.client input {
     background: #63b5ae;
     padding: 17px 43px;
     font-size: 21px;
@@ -199,36 +419,48 @@ nav{
     font-weight: bold;
     margin-top: 25px;
 }
-.project_name{
+.client input:hover{
+    background-color: white;
+    color: black;
+    border: 2px solid #63b5ae;
+    padding: 17px 41px;
+}
+.client input:active{
+    transform: scale(1.05);
+}
+
+
+.project_name {
     margin: 40px 0 110px 85px;
 }
-.project_name h3{
+.project_name h3 {
     font-size: 21px;
     font-weight: bold;
 }
-.project_name p{
+.project_name p {
     width: 80%;
     line-height: 30px;
     text-align: left;
     font-size: 16px;
 }
 
-.calc{
+
+.calc {
     margin-top: 210px;
     width: 895px;
     margin-left: 495px;
 }
-.calc h2{
+.calc h2 {
     font-size: 26px;
     font-weight: bold;
     text-align: center;
 }
-.calc_item h3{
+.calc_item h3 {
     font-size: 21px;
     line-height: 45px;
     font-weight: bold;
 }
-.calc_item select{
+.calc_item select {
     width: 895px;
     height: 45px;
     background: #eeeeee;
@@ -237,25 +469,26 @@ nav{
     font-size: 14px;
     margin-bottom: 20px;
 }
-.calc hr{
+.calc hr {
     height: 2px;
     border: none;
     background: #d1d1d1;
     margin-top: 10px;
 }
-.res h4{
+.res h4 {
     margin: 15px 0;
     font-weight: bold;
     font-size: 16px;
 }
 
-.statistics{
+
+.statistics {
     width: 100%;
     height: 500px;
-    background: url(../img/background3.jpg) center/cover no-repeat;
+    background: url(../img/background3.jpg) center/cover no-repeat fixed;
     margin-top: 155px;
 }
-.statistics h2{
+.statistics h2 {
     text-align: center;
     width: 330px;
     font-size: 26px;
@@ -264,29 +497,72 @@ nav{
     padding: 100px 0 20px 0;
     color: #263244;
 }
-.statistics hr{
+.statistics hr {
     height: 4px;
     border: none;
     background: orange;
     width: 70px;
     margin: 0px auto;
 }
-.statistics_item{
+.statistics_item {
     width: 210px;
     float: left;
     text-align: center;
     margin: 100px 42px 0 42px;
+    
+    opacity: 0;
+    -webkit-animation: st_appearing 1.5s forwards;
+    -o-animation: st_appearing 1.5s forwards;
+    animation: st_appearing 1.5s forwards;
+    
 }
-.statistics_item h3{
+.statistics_item:nth-child(2){
+    -webkit-animation-delay: 1.5s;
+    -o-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+}
+.statistics_item:nth-child(3){
+    -webkit-animation-delay: 3s;
+    -o-animation-delay: 3s;
+    animation-delay: 3s;
+}
+.statistics_item:nth-child(4){
+    -webkit-animation-delay: 4.5s;
+    -o-animation-delay: 4.5s;
+    animation-delay: 4.5s;
+}
+.statistics_item::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    transform: scaleX(0);
+    background-color: orange;
+    transition: all 0.3s;
+}
+.statistics_item:hover::after{
+    transform: scaleX(1);
+}
+@keyframes st_appearing{
+    0%{
+        opacity: 0;
+        margin-left: -500px; 
+    }
+    100%{
+        opacity: 1;
+        margin-left: 42px;
+    }
+}
+.statistics_item h3 {
     font-weight: bold;
     color: #263244;
     font-size: 26px;
     margin-top: 20px;
 }
-.all_statistics{
+.all_statistics {
     padding-left: 360px;
 }
-.statistics_item p{
+.statistics_item p {
     margin-top: 10px;
     line-height: 20px;
     color: #263244;
@@ -294,7 +570,8 @@ nav{
     font-size: 14px;
 }
 
-.reviews h2{
+
+.reviews h2 {
     text-align: center;
     width: 200px;
     font-size: 26px;
@@ -303,53 +580,54 @@ nav{
     padding: 100px 0 20px 0;
     color: #263244;
 }
-.reviews hr{
+.reviews hr {
     height: 4px;
     border: none;
     background: orange;
     width: 70px;
     margin: 0px auto;
 }
-.reviews_item img{
+.reviews_item img {
     display: block;
     margin: 60px auto 40px auto;
 }
-.reviews_item p{
+.reviews_item p {
     width: 690px;
     text-align: center;
     margin: 0 auto;
     line-height: 22px;
     font-size: 18px;
 }
-.reviews_item .unique_p{
+.reviews_item .unique_p {
     margin-top: 40px;
 }
-.reviews_item .first_hr{
+.reviews_item .first_hr {
     display: block;
     margin: 50px 7px 0 925px;
     float: left;
-    width: 10px; 
+    width: 10px;
     height: 10px;
     background: orange;
     border-radius: 50%;
 }
-.reviews_item hr{
+.reviews_item hr {
     display: block;
     margin: 50px 7px 0 7px;
     float: left;
-    width: 10px; 
+    width: 10px;
     height: 10px;
     background: #cfd2d7;
     border-radius: 50%;
 }
 
-.contacts{
+
+.contacts {
     width: 100%;
     height: 810px;
     background: url(../img/background4.jpg) center/cover no-repeat;
     margin-top: 150px;
 }
-.contacts h2{
+.contacts h2 {
     text-align: center;
     width: 300px;
     font-size: 26px;
@@ -358,52 +636,53 @@ nav{
     padding: 100px 0 20px 0;
     color: white;
 }
-.contacts hr{
+.contacts hr {
     height: 4px;
     border: none;
     background: orange;
     width: 70px;
     margin: 0px auto;
 }
-.contacts p{
+.contacts p {
     text-align: center;
     color: white;
     font-size: 18px;
     margin-top: 35px;
 }
-.contacts_item{
+.contacts_item {
     width: 155px;
     float: left;
     text-align: center;
     color: white;
     margin: 50px 50px 0 50px;
 }
-.all_contacts{
+.all_contacts {
     width: 770px;
     margin: 0 auto;
 }
-.clear{
+.clear {
     clear: left;
 }
-.contacts_item h4{
+.contacts_item h4 {
     line-height: 20px;
     margin-top: 20px;
     font-size: 16px;
 }
-.contacts_item .second_h4_from_contacts{
+.contacts_item .second_h4_from_contacts {
     margin-top: 0;
 }
 
-.feedback{
+
+.feedback {
     text-align: center;
     margin-top: 40px;
 }
-.feedback h3{
+.feedback h3 {
     color: white;
     font-size: 20px;
     margin-bottom: 45px;
 }
-.feedback input[type="text"]{
+.feedback input[type="text"] {
     width: 350px;
     height: 40px;
     margin: 0 15px 15px 15px;
@@ -411,12 +690,12 @@ nav{
     font-size: 16px;
     background: rgba(255, 255, 255, 0.8);
 }
-.feedback textarea{
+.feedback textarea {
     width: 734px;
     height: 95px;
     background: rgba(255, 255, 255, 0.8);
 }
-.feedback input[type="submit"]{
+.feedback input[type="submit"] {
     width: 125px;
     height: 45px;
     background: none;
@@ -426,12 +705,17 @@ nav{
     border-radius: 5px;
     font-size: 16px;
 }
+.feedback input[type="submit"]:hover{
+    box-shadow: 0px 0px 10px orange;
+}
 
-.location img{
+.location img {
     width: 100%;
     height: 350px;
 }
-footer{
+
+
+footer {
     height: 95px;
     width: 100%;
     background: #344051;
