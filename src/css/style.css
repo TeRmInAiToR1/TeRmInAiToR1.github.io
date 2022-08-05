@@ -11,7 +11,6 @@ body {
 }
 
 
-/*
 .preloader{
     background: #e0e0e0;
     z-index: 101;
@@ -21,10 +20,12 @@ body {
     bottom: 0;
     position: fixed;
     
+/*
     -webkit-animation: hide_loader forwards;
     -o-animation: hide_loader forwards;
     animation: hide_loader forwards;
     animation-delay: 3s;
+*/
 }
 .preloader__item:nth-child(2) {
     border-color: blueviolet;
@@ -77,7 +78,6 @@ body {
         z-index: -1;
     }
 }
-*/
 
 
 main {
@@ -97,14 +97,17 @@ nav {
     color: #fff;
     font-size: 28px;
     line-height: 60px;
-/*    padding-left: 388px;*/
     float: left;
     font-family: 'Franklin_Gothic_Medium';
+    text-decoration: none;
 
     -webkit-animation: appearing 2s ease;
     -o-animation: appearing 2s ease;
     animation: appearing 2s ease;
     
+}
+.logo:visited{
+    color: white;
 }
 
 @keyframes appearing {
@@ -140,6 +143,7 @@ nav {
     transition: all 0.1s;
     transform: scale(1);
     text-decoration: none;
+    color: #fff;
 }
 .menu li a:visited {
     color: white;
@@ -147,6 +151,11 @@ nav {
 .menu li a:hover {
     color: orange;
     transform: scale(1.1);
+}
+
+.activeNav{
+    color: orange !important;
+    transform: scale(1.1) !important;
 }
 @keyframes topshift {
     from {
@@ -253,6 +262,14 @@ nav {
         margin-left: 0px;
     }
 }
+@media (max-width:1200px) and (min-width:991.5px){
+    .title__container input{
+        margin-top: 25px;
+    }
+    .title__container h4{
+        margin-top: 25px;
+    }
+}
 @media (max-width: 991px){
     .title__container, .title__container h4, .title__container input{
         color:white;
@@ -287,6 +304,14 @@ nav {
 }
 
 
+.my_modal{
+    display: none;
+}
+.modal{
+    font-size: 17px;
+}
+
+
 .about_me h2 {
     font-size: 26px;
     font-weight: 600;
@@ -310,13 +335,13 @@ nav {
     opacity: 1;
 }
 
-#image1 {
+.element-animation{
     opacity: 0;
-
+}
+.show-animation{
     -webkit-animation: man_is_moving 2s forwards;
     -o-animation: man_is_moving 2s forwards;
     animation: man_is_moving 2s forwards;
-    
 }
 @keyframes man_is_moving {
     from {
@@ -415,6 +440,22 @@ nav {
 }
 .skills_item:hover::after{
     transform: scaleX(0.9);
+}
+.element-animation-sk{
+    opacity: 0;
+}
+.show-animation-sk{
+    -webkit-animation: sk_appearing 1.5s forwards;
+    -o-animation: sk_appearing 1.5s forwards;
+    animation: sk_appearing 1.5s forwards;
+}
+@keyframes sk_appearing{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 @media (min-width:459px) and (max-width:577px){
     .skills{
@@ -534,7 +575,7 @@ nav {
     height: 45px;
     background: #eeeeee;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 25px;
 }
 .calc_item hr{
@@ -542,7 +583,8 @@ nav {
     border: none;
     background: #d1d1d1;
     margin-top: 10px;
-    width: 895px;
+/*    width: 895px;*/
+    width: 82%;
     opacity: 1;
 }
 .ccl h4 {
@@ -551,10 +593,14 @@ nav {
     font-size: 17px;
 }
 .ccl .numbers{
-    margin-left: -25px;
     font-size: 17px;
     font-weight: bold;
+    margin-right: 8%;
 }
+.ccl h4{
+    margin-left: 8%;
+}
+
 .request_button input{
     width: 200px;
     height: 50px;
@@ -582,7 +628,6 @@ nav {
     }
 }
 
-
 .statistics {
     height: 500px;
     background: url(../img/background3.jpg) center/cover no-repeat fixed;
@@ -607,29 +652,9 @@ nav {
 }
 
 .statistics_item {
-    margin-top: 100px;
-    
-    opacity: 0;
-    -webkit-animation: st_appearing 0.8s forwards;
-    -o-animation: st_appearing 0.8s forwards;
-    animation: st_appearing 0.8s forwards;
-    
+    margin-top: 100px;  
 }
-.statistics_item:nth-child(2){
-    -webkit-animation-delay: 0.8s;
-    -o-animation-delay: 0.8s;
-    animation-delay: 0.8s;
-}
-.statistics_item:nth-child(3){
-    -webkit-animation-delay: 1.6s;
-    -o-animation-delay: 1.6s;
-    animation-delay: 1.6s;
-}
-.statistics_item:nth-child(4){
-    -webkit-animation-delay: 2.4s;
-    -o-animation-delay: 2.4s;
-    animation-delay: 2.4s;
-}
+
 .statistics_item::after{
     content: "";
     display: block;
@@ -640,14 +665,6 @@ nav {
 }
 .statistics_item:hover::after{
     transform: scaleX(0.7);
-}
-@keyframes st_appearing{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
 }
 
 .statistics_item h3 {
@@ -663,6 +680,13 @@ nav {
     font-weight: bold;
     font-size: 14px;
 }
+.viz {
+  opacity: 1;
+  transition: 1s !important;
+}
+.number {
+  opacity: 0;
+}
 @media (max-width:767.88px){
     .statistics{
         height: 650px;
@@ -672,6 +696,34 @@ nav {
     }
 }
 
+.carousel-item .carousel_img{
+    border-radius: 50%;
+}
+.crl{
+    padding-bottom: 30px;
+}
+.crl-ind{
+    margin-top: 30px;
+}
+.crl-ind button{
+    background-color: #cfd3d8 !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    opacity: 1 !important;
+}
+.crl-ind .active{
+    background-color: orange!important;
+}
+.crl-inner{
+    margin-bottom: 20px;
+}
+button .left{
+    background-image: url(../img/leftArrow.png);
+}
+button .right{
+    background-image: url(../img/rightArrow.png);
+}
 .reviews h2 {
     text-align: center;
     width: 200px;
