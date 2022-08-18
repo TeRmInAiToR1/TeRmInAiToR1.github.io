@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/animate.min.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +70,7 @@
    <main>
         <section class="main" id="main_menu">
            <div class="container h-100">
-               <div class="row align-items-center h-100">
+               <div class="row align-items-center h-100 animate__animated animate__bounceInLeft animate__delay-2s">
                    <div class="col-xl-7 col-lg-6 mt-5 pt-5">
                         <div class="title__container mt-5">
                             <h1>Привет <br> Я Кирилл Шкляев</h1>
@@ -87,7 +88,6 @@
     <button type="button" class="btn btn-primary my_modal" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
       Запустить модальное окно
     </button>
-
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -101,7 +101,7 @@
           <div class="modal-body">Закажите услугу сейчас и получите скидку в размере 20%</div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+<!--            <button type="button" class="btn btn-primary">Save changes</button>-->
           </div>
         </div>
       </div>
@@ -114,7 +114,7 @@
                <div class="col-12 col-sm-6 col-md-3 text-center"><h2>ОБО МНЕ</h2>   <hr></div>
            </div>
 
-           <img class="d-block mx-auto element-animation imgUploads1" src="img/man-min-min.png" data_src="img/man.png" alt="" id="image1">
+           <img class="d-block mx-auto wow animate__animated animate__fadeInDown imgUploads1" src="img/man-min-min.png" data_src="img/man.png" alt="" id="image1">
 
            <div class="row justify-content-center resume">
                <p class="col-12 col-sm-10 col-md-9 col-lg-8 text-center text-md-start">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod nisi, magni et recusandae minus veniam beatae temporibus dolor, odio iusto iste porro saepe sequi, aliquam.</p>
@@ -131,23 +131,23 @@
         <div class="skills_container container">
             <h2>ЧТО Я УМЕЮ</h2>
             <hr>
-            <div class="row justify-content-center text-center element-animation-sk">
-                <div class="skills_item col-12 col-sm-6 col-md-3">
+            <div class="row justify-content-center text-center">
+                <div class="skills_item col-12 col-sm-6 col-md-3 animate__animated animate__backInLeft wow">
                     <img src="img/pc.png" alt="">
                     <h3>Веб-дизайн</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, a?</p>
                 </div>
-                <div class="skills_item col-12 col-sm-6 col-md-3">
+                <div class="skills_item col-12 col-sm-6 col-md-3 animate__animated animate__backInLeft animate__delay-1s wow">
                     <img src="img/sign.png" alt="">
                     <h3>Разработка</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, a?</p>
                 </div>
-                <div class="skills_item col-12 col-sm-6 col-md-3">
+                <div class="skills_item col-12 col-sm-6 col-md-3 animate__animated animate__backInLeft animate__delay-2s wow">
                     <img src="img/rocket.png" alt="">
                     <h3>CEO-оптимизация</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, a?</p>
                 </div>
-                <div class="skills_item col-12 col-sm-6 col-md-3">
+                <div class="skills_item col-12 col-sm-6 col-md-3 animate__animated animate__backInLeft animate__delay-3s wow">
                     <img src="img/speaker.png" alt="">
                     <h3>Маркетинг</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, a?</p>
@@ -171,6 +171,7 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
+<!--                href в img - для модального окна-->
                 <div class="carousel-inner carousel_inner">
                     <div class="carousel-item active">
                         <img src="img/picture-min.jpg" class="d-block w-100 image-link" href="img/picture.jpg" alt="..." data_src="img/picture.jpg">
@@ -224,7 +225,7 @@
                      </div> 
                     <div class="row justify-content-center calc_item">
                         <select class="col-9" name="list1" id="siteType" required>
-                            <option value="">Выберите пункт...</option>
+                            <option value="" selected disabled>Выберите пункт...</option>
                             <option value="Opt1">Социальный</option>
                             <option value="Opt2">Комерческий</option>
                             <option value="Opt3">Информационный</option>
@@ -237,7 +238,7 @@
                      </div> 
                     <div class="row justify-content-center calc_item">
                         <select class="col-10" name="list1" id="siteDesign" required>
-                            <option value="">Выберите пункт...</option>
+                            <option value="" selected disabled>Выберите пункт...</option>
                             <option value="Opt1">Hi Tech</option>
                             <option value="Opt2">Organic & Natural</option>
                             <option value="Opt3">Полигональный</option>
@@ -250,7 +251,7 @@
                      </div> 
                     <div class="row justify-content-center calc_item">
                         <select class="col-10" name="list1" id="siteAdapt" required>
-                            <option value="">Выберите пункт...</option>
+                            <option value="" selected disabled>Выберите пункт...</option>
                             <option value="Opt1">Резиновый</option>
                             <option value="Opt2">Pixel Perfect</option>
                             <option value="Opt3">Адаптивный</option>
@@ -374,13 +375,13 @@
             <div class="row justify-content-center text-center">
                 <h3 class="col-8">ОСТАВЬТЕ МНЕ СООБЩЕНИЕ</h3>
             </div>
-                <form id="feedback_form" action="#" >
+                <form id="feedback_form" action="php/mail.php" method="post">
                    <div class="row justify-content-center">
                       <div class="col-5 col-lg-4">
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Имя">
+                          <input type="text" name="user_name" class="form-control" id="exampleInputEmail1" placeholder="Имя" required autocomplete="off">
                       </div>
                        <div class="col-5 col-lg-4">
-                           <input type="name" class="form-control" id="exampleInputName" placeholder="Email">
+                           <input type="tel" name="user_email" class="form-control" id="exampleInputName" placeholder="Телефон" required autocomplete="off">
                        </div>
                        
                    </div>
@@ -395,13 +396,16 @@
     </div>
    </section>
 
-    <div class="location"></div>
+    <div class="location" id="map_container"><script type="text/javascript" charset="utf-8" id="ymap_lazy" async data_src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2bb3cc88c01ee6288d0232f591300f05737fffc80165d9369bf186e250a5b36a&amp;width=100%25&amp;height=350&amp;lang=ru_RU&amp;scroll=false"></script></div>
+    
     <footer>Copyright©2022 Кирилл Шкляев Design by Web</footer>
     
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery.spincrement.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/muskedinput.min.js"></script>
     <script src="js/myScript.js"></script>
 </body>
 

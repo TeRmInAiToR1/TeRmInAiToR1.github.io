@@ -6,6 +6,25 @@ $(window).on('load', function () {
 });
 
 $(document).ready(function(){
+    new WOW().init();
+    
+    $("form").submit(function(event){
+        event.preventDefault();
+        
+        $.ajax({
+            type: "POST",
+            url: "php/mail.php",
+            data: $(this).serialize()
+        }).done(function(){
+            $(this).find("input").val("");
+            alert("Успешно отправлено!");
+            $("form").trigger("reset");
+        });
+        return false;
+    });
+    
+    $("#exampleInputName").mask("+7(999) 999-9999");
+    
     $(window).scroll(function(){
         let scrollDistance = $(window).scrollTop();
         $(".section").each(function(i, el){
@@ -29,17 +48,17 @@ $(document).ready(function(){
     });
     
     let options = {threshold: [0.5]};//анимация сработает при появлении объекта на 50%
-    let observer = new IntersectionObserver(onEntry, options);
-    let elements = $(".element-animation");
-    elements.each(function(i, el){
-        observer.observe(el);
-    });
+//    let observer = new IntersectionObserver(onEntry, options);
+//    let elements = $(".element-animation");
+//    elements.each(function(i, el){
+//        observer.observe(el);
+//    });
     
-    observer = new IntersectionObserver(onEntryST, options);
-    elements = $(".element-animation-sk");
-    elements.each(function(i, el){
-        observer.observe(el);
-    });
+//    observer = new IntersectionObserver(onEntryST, options);
+//    elements = $(".element-animation-sk");
+//    elements.each(function(i, el){
+//        observer.observe(el);
+//    });
     
     let imgObserver = new IntersectionObserver(onEntryImg, options);
     let imgElements = $(".imgUploads1");
@@ -54,14 +73,14 @@ $(document).ready(function(){
         imgObserver.observe(el);
     });
     
-    let optionsCarousel = {threshold: [0.1]};//анимация сработает при появлении объекта на 50%
+    let optionsCarousel = {threshold: [0.1]};
     let observerCarousel = new IntersectionObserver(onEntryCarousel, optionsCarousel);
     let elementsCarousel = $(".image-link");
     elementsCarousel.each(function(i, el){
         observerCarousel.observe(el);
     });
     
-    //setTimeout(function(){ $(".my_modal").trigger('click'); }, 10000);
+    setTimeout(function(){ $(".my_modal").trigger('click'); }, 10000);
     
     $('.image-link').magnificPopup({type:'image'});
     
@@ -84,6 +103,35 @@ $(document).ready(function(){
             show = false;
         }
     });
+    
+    let mapObserver = new IntersectionObserver(onEntryMap, optionsCarousel);
+    let mapElements = $(".location");
+    mapElements.each(function(i, el){
+        mapObserver.observe(el);
+    });
+    
+    
+//    let map_container = document.getElementById('map_container');
+//    let options_map = {
+//        once: true,//запуск один раз, и удаление наблюдателя сразу
+//        passive: true,
+//        capture: true
+//    };
+//    map_container.addEventListener('click', start_lazy_map, options_map);
+//    map_container.addEventListener('mouseover', start_lazy_map, options_map);
+//    map_container.addEventListener('touchstart', start_lazy_map, options_map);
+//    map_container.addEventListener('touchmove', start_lazy_map, options_map);
+//
+//    let map_loaded = false;
+//    function start_lazy_map() {
+//        if (!map_loaded) {
+//            let map_block = document.getElementById('ymap_lazy');
+//            map_loaded = true;
+//            map_block.setAttribute('src', map_block.getAttribute('data_src'));
+//            map_block.removeAttribute('data_src');
+//            console.log('YMAP LOADED');
+//        }
+//    }
 });
     
 function countPrice(){
@@ -134,21 +182,30 @@ function countPrice(){
     num_s.addClass('col-4');
 }
 
-function onEntry(entry){
-    entry.forEach(change => {
-       if(change.isIntersecting){
-           change.target.classList.add('show-animation');
-       } 
-    });
-}
-function onEntryST(entry){
-    entry.forEach(change => {
-       if(change.isIntersecting){
-           change.target.classList.add('show-animation-sk');
-       } 
-    });
-}
+//function onEntry(entry){
+//    entry.forEach(change => {
+//       if(change.isIntersecting){
+//           change.target.classList.add('show-animation');
+//       } 
+//    });
+//}
+//function onEntryST(entry){
+//    entry.forEach(change => {
+//       if(change.isIntersecting){
+//           change.target.classList.add('show-animation-sk');
+//       } 
+//    });
+//}
 
+function onEntryMap(entry){
+    entry.forEach(change => {
+       if(change.isIntersecting){
+           $('.location script').each( function(){ this.src = this.getAttribute('data_src');
+           this.removeAttribute('data_src');
+                                              });
+       } 
+    });
+}
 function onEntryImg(entry){
     entry.forEach(change => {
        if(change.isIntersecting){
@@ -172,11 +229,16 @@ function onEntryCarousel(entry){
        } 
     });
 }
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+//function getRandomInt(min, max) {
+//  min = Math.ceil(min);
+//  max = Math.floor(max);
+//  return Math.floor(Math.random() * (max - min)) + min;
+//}
+
+//function notice(){
+//    $(".my_modal_2").trigger('click');
+//}
+
 $('a[href^="#"]').click(function(){//плавный скрол к секциям
     let valHref = $(this).attr("href");
     $('html, body').animate({scrollTop: $(valHref).offset().top - 50 + "px"});

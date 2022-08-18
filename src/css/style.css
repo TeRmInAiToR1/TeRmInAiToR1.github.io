@@ -201,6 +201,7 @@ nav {
     text-align: center;
     width: 100%;
 
+/*
     opacity: 0;
     -webkit-animation: titlemove 1s ease forwards;
     -o-animation: titlemove 1s ease forwards;
@@ -209,6 +210,7 @@ nav {
     -webkit-animation-delay: 2.4s;
     -o-animation-delay: 2.4s;
     animation-delay: 2.4s;
+*/
 }
 .title__container h1 {
     font-family: Arial, sans-serif;
@@ -286,7 +288,7 @@ nav {
     .main{
         position: relative;
     }
-    .main::after{
+    .main::before{
         content: "";
         bottom: 0;
         top: 0;
@@ -294,13 +296,18 @@ nav {
         right: 0;
         position: absolute;
         background: rgba(0,0,0,0.4);
-        z-index: 1;
+        z-index: 0;
     }
     .title__container{
         -webkit-animation-delay: 0.5s;
         -o-animation-delay: 0.5s;
         animation-delay: 0.5s;
     }
+/*
+    .dropdown{
+        color: white;
+    }
+*/
 }
 
 
@@ -310,7 +317,6 @@ nav {
 .modal{
     font-size: 17px;
 }
-
 
 .about_me h2 {
     font-size: 26px;
@@ -335,14 +341,19 @@ nav {
     opacity: 1;
 }
 
+/*
 .element-animation{
     opacity: 0;
 }
+*/
+/*
 .show-animation{
     -webkit-animation: man_is_moving 2s forwards;
     -o-animation: man_is_moving 2s forwards;
     animation: man_is_moving 2s forwards;
 }
+*/
+/*
 @keyframes man_is_moving {
     from {
         margin-left: -500px;
@@ -356,6 +367,7 @@ nav {
         opacity: 1;
     }
 }
+*/
 .resume {
     margin-top: 22px;
     font-size: 17px;
@@ -441,14 +453,22 @@ nav {
 .skills_item:hover::after{
     transform: scaleX(0.9);
 }
+.skills_container .skills_item{
+    --animate-delay: 0.5s;
+}
+/*
 .element-animation-sk{
     opacity: 0;
 }
+*/
+/*
 .show-animation-sk{
     -webkit-animation: sk_appearing 1.5s forwards;
     -o-animation: sk_appearing 1.5s forwards;
     animation: sk_appearing 1.5s forwards;
 }
+*/
+/*
 @keyframes sk_appearing{
     0%{
         opacity: 0;
@@ -457,6 +477,7 @@ nav {
         opacity: 1;
     }
 }
+*/
 @media (min-width:459px) and (max-width:577px){
     .skills{
         background: url(../img/background2.jpg) center/cover fixed;
@@ -824,7 +845,7 @@ button .right{
     margin-bottom: 40px;
 }
 
-.feedback input[type="email"], input[type="name"] {
+.feedback input[type="tel"], input[type="text"] {
     height: 40px;
     font-size: 16px;
     background: rgba(255, 255, 255, 0.8);
