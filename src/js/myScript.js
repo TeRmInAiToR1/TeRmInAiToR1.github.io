@@ -6,9 +6,10 @@ $(window).on('load', function () {
 });
 
 $(document).ready(function(){
-    new WOW().init();
+    new WOW().init();//отложенная загрузка animate.css анимаций
     
-    $("form").submit(function(event){
+    
+    $("#feedback_form").submit(function(event){//обратная связь
         event.preventDefault();
         
         $.ajax({
@@ -22,13 +23,33 @@ $(document).ready(function(){
         });
         return false;
     });
+    $("#request_form").submit(function(event){//обратная связь
+        event.preventDefault();
+//        console.log("nne");
+        
+        $.ajax({
+            type: "POST",
+            url: "php/request.php",
+            data: $(this).serialize()
+        }).done(function(){
+            $(".ccl").find(".numbers").text("0");
+            $(".ccl").find("select").val("default");
+            $(".request_button").find("input").val("Рассчитать");
+            
+            alert("Заявка успешно отправлена!");
+            $("form").trigger("reset");
+        });
+        return false;
+    });
     
     $("#exampleInputName").mask("+7(999) 999-9999");
+    $("#requestPhone").mask("+7(999) 999-9999");
     
+    //меню навигации
     $(window).scroll(function(){
         let scrollDistance = $(window).scrollTop();
         $(".section").each(function(i, el){
-            if($(el).offset().top - $("nav").outerHeight() - 100 <= scrollDistance){
+            if($(el).offset().top - $("nav").outerHeight() - 200 <= scrollDistance){
                 $("nav a").each(function(i, el){
                     if($(el).hasClass("activeNav")){
                         $(el).removeClass("activeNav");
@@ -169,7 +190,6 @@ function countPrice(){
         }
     };
     answers.calculations();
-    console.log(answers.cost);
     let num_f = $('.numbers:first');
     let num_s = $('.numbers:last'); 
     num_f.text(answers.terms + " дней");
@@ -180,6 +200,27 @@ function countPrice(){
     
     num_s.removeClass('col-1');
     num_s.addClass('col-4');
+    
+    let button = $(".request_button input");
+    if(button.val() === "Оставить заявку"){
+       $(".requestModal").trigger('click');
+        
+        $(".requestData .first_item_2").text(type);
+        $(".requestDataInputs .in1").val(type);
+        
+        $(".requestData .second_item_2").text(design);
+        $(".requestDataInputs .in2").val(design);
+        
+        $(".requestData .third_item_2").text(adaptability);
+        $(".requestDataInputs .in3").val(adaptability);
+        
+        $(".requestData .fourth_item_2").text(answers.terms + " дней");
+        $(".requestDataInputs .in4").val(answers.terms + " дней");
+        
+        $(".requestData .fifth_item_2").text(answers.cost + " рублей");
+        $(".requestDataInputs .in5").val(answers.cost + " рублей");
+    }
+    else button.val("Оставить заявку");
 }
 
 //function onEntry(entry){
@@ -241,5 +282,11 @@ function onEntryCarousel(entry){
 
 $('a[href^="#"]').click(function(){//плавный скрол к секциям
     let valHref = $(this).attr("href");
-    $('html, body').animate({scrollTop: $(valHref).offset().top - 50 + "px"});
+    if(valHref == "#" + "cases"){
+        $('html, body').animate({scrollTop: $(valHref).offset().top + 100 + "px"});
+    }
+    else{
+        $('html, body').animate({scrollTop: $(valHref).offset().top - 70 + "px"});
+    }
+    
 });
